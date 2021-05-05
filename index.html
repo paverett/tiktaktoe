@@ -1,43 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta http-equiv="Content-Type" content="charset=utf-8"/>
-    <title>Tik Tak Toe</title>
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-  </head>
-  <body>
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="js/gamePlay.js"></script>
-    <h1>Tik Tak Toe</h1>
-    <div id="registration">
-      <div>
-        <h2>New Game!</h2>
-        <input type="text" name="name" id="creator" placeholder="Enter a username" required>
-        <button id="new" onclick="newGame()">New Game</button>
-      </div>
-      <div>
-        <h2>Join Existing Game!</h2>
-        <input type="text" name="name" id="joinee" placeholder="Enter a username" required>
-        <input type="text" name="room" id="roomNumber" placeholder="Enter Game Id" required>
-        <button id="join" onclick="joinGame()">Join Game</button></div>
-      </div>
+
+<head>
+  <meta http-equiv="Content-Type" content="charset=utf-8" />
+  <title>Tik Tak Toe</title>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="js/gamePlay.js"></script>
+  <h1>Tik Tak Toe</h1>
+  <div id="registration">
+    <div>
+      <h2>New Game!</h2>
+      <input type="text" name="name" id="creator" placeholder="Enter a username" required>
+      <button id="new" onclick="newGame()">New Game</button>
     </div>
-    <div class='board'>
-      <div class='row'>
-        <button class='square' value=1>
-        <button class='square' value=2></button>
-        <button class='square' value=3></button>
-      </div>
-      <div class='row'>
-        <button class='square' value=4></button>
-        <button class='square' value=5></button>
-        <button class='square' value=6></button>
-      </div>
-      <div class='row'>
-        <button class='square' value=7></button>
-        <button class='square' value=8></button>
-        <button class='square' value=9></button>
-      </div>
+    <div>
+      <h2>Join Existing Game!</h2>
+      <input type="text" name="name" id="joinee" placeholder="Enter a username" required>
+      <input type="text" name="room" id="roomNumber" placeholder="Enter Game Id" required>
+      <button id="join" onclick="joinGame()">Join Game</button>
     </div>
-  </body>
+  </div>
+  </div>
+  <div id='userMessage'></div>
+  <div id='turnMessage'></div>
+  <div class='board' id='tikTakBoard'>
+    <div class='row'>
+      <button id='square-0' class='square' value=2 onclick="updateBoard(this, 0)"></button>
+      <button id='square-1' class='square' value=4 onclick="updateBoard(this, 1)"></button>
+      <button id='square-2' class='square' value=8 onclick="updateBoard(this, 2)"></button>
+    </div>
+    <div class='row'>
+      <button id='square-3' class='square' value=16 onclick="updateBoard(this, 3)"></button>
+      <button id='square-4' class='square' value=32 onclick="updateBoard(this, 4)"></button>
+      <button id='square-5' class='square' value=64 onclick="updateBoard(this, 5)"></button>
+    </div>
+    <div class='row'>
+      <button id='square-6' class='square' value=128 onclick="updateBoard(this, 6)"></button>
+      <button id='square-7' class='square' value=256 onclick="updateBoard(this, 7)"></button>
+      <button id='square-8' class='square' value=512 onclick="updateBoard(this, 8)"></button>
+    </div>
+  </div>
+</body>
+
 </html>
