@@ -1,33 +1,43 @@
 <!DOCTYPE html>
-<!--Will not be keeping this code, this just allows me to test sending a message over websockets-->
-<html>
+<html lang="en">
   <head>
-    <title>Send Message</title>
+    <meta http-equiv="Content-Type" content="charset=utf-8"/>
+    <title>Tik Tak Toe</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
   </head>
   <body>
-    <ul id="messages"></ul>
-    <form id="form" action="">
-      <input id="input" autocomplete="off" /><button>Send</button>
-    </form>
     <script src="/socket.io/socket.io.js"></script>
-    <script>
-        var socket = io();
-        var form = document.getElementById('form');
-        var input = document.getElementById('input');
-
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            if (input.value) {
-            socket.emit('chat message', input.value);
-            input.value = '';
-            }
-        });
-        socket.on('chat message', function(msg) {
-            var item = document.createElement('li');
-            item.textContent = msg;
-            messages.appendChild(item);
-            window.scrollTo(0, document.body.scrollHeight);
-        });
-    </script>
+    <script src="js/gamePlay.js"></script>
+    <h1>Tik Tak Toe</h1>
+    <div id="registration">
+      <div>
+        <h2>New Game!</h2>
+        <input type="text" name="name" id="creator" placeholder="Enter a username" required>
+        <button id="new" onclick="newGame()">New Game</button>
+      </div>
+      <div>
+        <h2>Join Existing Game!</h2>
+        <input type="text" name="name" id="joinee" placeholder="Enter a username" required>
+        <input type="text" name="room" id="roomNumber" placeholder="Enter Game Id" required>
+        <button id="join" onclick="joinGame()">Join Game</button></div>
+      </div>
+    </div>
+    <div class='board'>
+      <div class='row'>
+        <button class='square' value=1>
+        <button class='square' value=2></button>
+        <button class='square' value=3></button>
+      </div>
+      <div class='row'>
+        <button class='square' value=4></button>
+        <button class='square' value=5></button>
+        <button class='square' value=6></button>
+      </div>
+      <div class='row'>
+        <button class='square' value=7></button>
+        <button class='square' value=8></button>
+        <button class='square' value=9></button>
+      </div>
+    </div>
   </body>
 </html>
